@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>reveal.js</title>
+		<title>Symfony Doctrine</title>
 
 		<link rel="stylesheet" href="dist/reset.css">
 		<link rel="stylesheet" href="dist/reveal.css">
@@ -16,8 +16,151 @@
 	<body>
 		<div class="reveal">
 			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
+				<section>
+					<h2>Symfony + Doctrine</h2>
+				</section>
+				<section>
+					<h2>Pré-requis</h2>
+					<ul>
+						<li>Symfony CLI</li>
+						<li>Bases en Symfony</li>
+						<li>POO (Programmation Orientée Objet)</li>
+						<li>SQL</li>
+						<li>MySQL installé</li>
+					</ul>
+				</section>
+				<section>				
+					<section>
+						<h2>ORM Doctrine</h2>
+						<p>Un ORM (Object-Relational Mapping) est un outil qui permet de faire le lien entre les objets de votre application et les tables de votre base de données.</p>
+					</section>
+					<section>
+						<h2>Entité = Classe</h2>
+						<p>Une entité est une classe PHP qui représente une table dans la base de données. Chaque instance de cette classe représente une ligne dans la table.</p>
+					</section>
+				</section>
+				<section>				
+					<section>
+						<h2>Installation de Doctrine</h2>
+						<pre><code class="language-bash">composer require symfony/orm-pack</code></pre>
+					</section>
+					<section>
+						<img src="/ressources/docker.png" alt="">
+						<p>Docker or not Docker ?</p>
+					</section>
+				</section>
+				<section>
+					<img src="/ressources/env.png" alt="">
+					<p>SQLite, MySQL, MariaDB ou PostgreSQL</p>
+					<p>Connection string à modifier !</p>
+				</section>
+				<section>
+					<img src="/ressources/doctrine.png" alt="">
+				</section>
+				<section>
+					<h2>Créer une base de données</h2>
+					<pre><code class="language-bash">
+						php bin/console doctrine:database:create
+						# ou
+						symfony console doctrine:database:create
+					</code></pre>
+				</section>
+				<section>
+					<section>
+						<h2>Créer une entité</h2>
+						<pre><code class="language-bash">
+							php bin/console make:entity
+							# ou
+							symfony console make:entity
+						</code></pre>
+					</section>
+					<section>
+						<img src="ressources/make_entity.png" alt="">
+					</section>
+				</section>
+				<section>
+				
+					<section>
+						<h2>Nouveauté !</h2>
+						<pre><code>
+						src/
+						├── Controller/
+						├── Entity/
+						│   └── Product.php
+						├── Repository/
+						│   └── ProductRepository.php
+						└── ...
+						</code></pre>
+					</section>
+					<section>
+						<p>Entité, c'est une classe qui représente une table de la base de données.</p>
+					</section>
+					<section>
+						<img src="ressources/entity.png" alt="">
+					</section>
+					<section>
+						<p>Repository, c'est une classe qui permet d'accéder aux données d'une entité.</p>
+					</section>
+					<section>
+						<img src="ressources/repository.png" alt="">
+					</section>
+				</section>
+				<section>
+					<h2>Créer les tables en base de données</h2>
+					<pre><code class="language-bash">
+						php bin/console doctrine:migrations:diff
+						php bin/console doctrine:migrations:migrate
+						# ou
+						symfony console doctrine:migrations:diff
+						symfony console doctrine:migrations:migrate
+					</code></pre>
+				</section>
+				<section>
+					<img src="ressources/migrations.png" alt="">
+				</section>
+				<section>
+					<h2>Make CRUD sur une entité</h2>
+					<pre><code class="language-bash">
+						php bin/console make:crud
+						# ou
+						symfony console make:crud
+					</code></pre>
+				</section>
+				<section>
+					<img src="ressources/make_crud.png" alt="">
+					<p>1 Controleur, 1 form et 6 templates</p>
+				</section>
+				<section>
+					<img src="ressources/controller_crud.png" alt="">
+				</section>
+				<section>
+					<section>
+						<h2>Nouveauté !</h2>
+							<pre><code>
+							src/
+							├── Controller/
+							├── Entity/
+							├── Form/
+							│   └── ProductType.php
+							├── Repository/
+							└── ...
+							</code></pre>				
+					</section>
+					<section>
+						<img src="ressources/form_type.png" alt="">
+					</section>
+				</section>
+				<section>
+					<section>
+						<img src="ressources/index_template.png" alt="">
+					</section>
+					<section>
+						<img src="ressources/show_template.png" alt="">
+					</section>
+					<section>
+						<img src="ressources/delete_template.png" alt="">
+					</section>
+				</section>
 			</div>
 		</div>
 
